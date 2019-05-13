@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Cajero"
+             x:Class="Cajero.AdminBilletes">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+            <Label Text="Administrar Billetes"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Entry x:Name="txtCantidad" Placeholder="Ingrese la cantidad de billetes" />
+            <Entry x:Name="txtValor" Placeholder="Ingrese el valor de los billetes" />
+            <Button x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_click" />
+                
+            <ListView x:Name="lstAdmin" ItemsSource="{DynamicResource Admin}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="EntityValue" Grid.Column="0" Grid.Row="0" Text="{Binding Denominacion, StringFormat='{0:C2}'}"  />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
